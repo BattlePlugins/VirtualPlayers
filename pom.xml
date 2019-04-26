@@ -43,6 +43,7 @@
         <module>modules/v1_12_R1</module>
         <module>modules/v1_13_R1</module>
         <module>modules/v1_13_R2</module>
+        <module>modules/v1_14_R1</module>
         <module>modules/VirtualPlayers</module>
     </modules>
     <repositories>

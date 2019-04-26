@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>mc.alk</groupId>
     <artifactId>VirtualPlayers</artifactId>
-    <version>1.13.2</version>
+    <version>1.14.0</version>
     <packaging>jar</packaging>
     <name>VirtualPlayers</name>
     <url>http://dev.bukkit.org/bukkit-plugins/virtualplayers2/</url>
@@ -277,6 +277,14 @@
         <dependency>
             <groupId>mc.alk</groupId>
             <artifactId>vp-v1_13_R2</artifactId>
+            <version>static_version</version>
+            <type>jar</type>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>mc.alk</groupId>
+            <artifactId>vp-v1_14_R1</artifactId>
             <version>static_version</version>
             <type>jar</type>
             <scope>compile</scope>
