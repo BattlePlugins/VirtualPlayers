@@ -48,8 +48,8 @@
     </modules>
     <repositories>
         <repository>
-            <id>rainbowcraft-repo</id>
-            <url>http://rainbowcraft.sytes.net/maven/repository/</url>
+            <id>battleplugins-repo</id>
+            <url>https://artifactory.battleplugins.org/artifactory/libs-release</url>
         </repository>
         <repository>
             <id>spigot-public</id>
@@ -117,8 +117,14 @@
     </build>
     <distributionManagement>
         <repository>
-            <id>rainbowcraft-repo</id>
-            <url>scp://rainbowcraft.sytes.net/var/www/maven/repository</url>
+            <id>central</id>
+            <name>BattlePlugins Artifactory Server-releases</name>
+            <url>https://artifactory.battleplugins.org/artifactory/libs-release-local</url>
         </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>BattlePlugins Artifactory Server-snapshots</name>
+            <url>https://artifactory.battleplugins.org/artifactory/libs-snapshot-local</url>
+        </snapshotRepository>
     </distributionManagement>
 </project>
