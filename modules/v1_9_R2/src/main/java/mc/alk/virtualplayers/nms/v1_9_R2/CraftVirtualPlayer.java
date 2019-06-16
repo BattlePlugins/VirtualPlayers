@@ -21,11 +21,8 @@ import org.bukkit.craftbukkit.v1_9_R2.CraftServer;
 import org.bukkit.craftbukkit.v1_9_R2.CraftWorld;
 import org.bukkit.craftbukkit.v1_9_R2.entity.CraftPlayer;
 import org.bukkit.craftbukkit.v1_9_R2.scoreboard.CraftScoreboard;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Egg;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Snowball;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
@@ -151,6 +148,16 @@ public class CraftVirtualPlayer extends CraftPlayer implements VirtualPlayer {
     @Override
     public boolean isDead() {
         return super.isDead() || health <= 0;
+    }
+
+    @Override
+    public boolean isSilent() {
+        return false;
+    }
+
+    @Override
+    public void setSilent(boolean b) {
+        // do nothing
     }
 
     @Override
@@ -345,21 +352,6 @@ public class CraftVirtualPlayer extends CraftPlayer implements VirtualPlayer {
     @Override
     public void _INVALID_setMaxHealth(int max) {
         setMaxHealth(max);
-    }
-
-    @Override
-    public Egg throwEgg() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public Snowball throwSnowball() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public Arrow shootArrow() {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

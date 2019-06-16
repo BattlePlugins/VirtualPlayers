@@ -21,16 +21,14 @@ import org.bukkit.craftbukkit.v1_9_R1.CraftServer;
 import org.bukkit.craftbukkit.v1_9_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
 import org.bukkit.craftbukkit.v1_9_R1.scoreboard.CraftScoreboard;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Egg;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Snowball;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
+import org.bukkit.inventory.MainHand;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.DisplaySlot;
@@ -77,6 +75,11 @@ public class CraftVirtualPlayer extends CraftPlayer implements VirtualPlayer {
     }
 
     @Override
+    public MainHand getMainHand() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
     public InventoryView openInventory(Inventory inv) {
         return null;
     }
@@ -99,6 +102,36 @@ public class CraftVirtualPlayer extends CraftPlayer implements VirtualPlayer {
     @Override
     public void removePotionEffect(PotionEffectType effect) {
         /// do nothing
+    }
+
+    @Override
+    public boolean isGliding() {
+        return false;
+    }
+
+    @Override
+    public void setGliding(boolean b) {
+        // do nothing
+    }
+
+    @Override
+    public void setAI(boolean b) {
+        // do nothing
+    }
+
+    @Override
+    public boolean hasAI() {
+        return false;
+    }
+
+    @Override
+    public void setCollidable(boolean b) {
+        // do nothing
+    }
+
+    @Override
+    public boolean isCollidable() {
+        return false;
     }
 
     @Override
@@ -151,6 +184,16 @@ public class CraftVirtualPlayer extends CraftPlayer implements VirtualPlayer {
     @Override
     public boolean isDead() {
         return super.isDead() || health <= 0;
+    }
+
+    @Override
+    public void setInvulnerable(boolean b) {
+        // do nothing
+    }
+
+    @Override
+    public boolean isInvulnerable() {
+        return false;
     }
 
     @Override
@@ -345,21 +388,6 @@ public class CraftVirtualPlayer extends CraftPlayer implements VirtualPlayer {
     @Override
     public void _INVALID_setMaxHealth(int max) {
         setMaxHealth(max);
-    }
-
-    @Override
-    public Egg throwEgg() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public Snowball throwSnowball() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public Arrow shootArrow() {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

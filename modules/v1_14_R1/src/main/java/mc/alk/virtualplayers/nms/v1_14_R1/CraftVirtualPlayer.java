@@ -21,7 +21,6 @@ import org.bukkit.craftbukkit.v1_14_R1.entity.CraftPlayer;
 import org.bukkit.craftbukkit.v1_14_R1.scoreboard.CraftScoreboard;
 import org.bukkit.craftbukkit.v1_14_R1.util.CraftMagicNumbers;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Pose;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
@@ -150,11 +149,6 @@ public class CraftVirtualPlayer extends CraftPlayer implements VirtualPlayer {
     @Override
     public boolean isDead() {
         return super.isDead() || health <= 0;
-    }
-
-    @Override
-    public Pose getPose() {
-        return Pose.STANDING;
     }
 
     @Override
