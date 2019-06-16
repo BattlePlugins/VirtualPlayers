@@ -17,7 +17,7 @@
     <repositories>
         <repository>
             <id>battleplugins-repo</id>
-            <url>https://artifactory.battleplugins.org/artifactory/libs-release</url>
+            <url>https://repo.battleplugins.org/artifactory/libs-release</url>
         </repository>
         <repository>
             <id>spigot-public</id>
@@ -106,13 +106,13 @@
     <distributionManagement>
         <repository>
             <id>central</id>
-            <name>BattlePlugins Artifactory Server-releases</name>
-            <url>https://artifactory.battleplugins.org/artifactory/libs-release-local</url>
+            <name>BattlePlugins Maven Server-releases</name>
+            <url>https://repo.battleplugins.org/artifactory/libs-release-local</url>
         </repository>
         <snapshotRepository>
             <id>snapshots</id>
-            <name>BattlePlugins Artifactory Server-snapshots</name>
-            <url>https://artifactory.battleplugins.org/artifactory/libs-snapshot-local</url>
+            <name>BattlePlugins Maven Server-snapshots</name>
+            <url>https://repo.battleplugins.org/artifactory/libs-snapshot-local</url>
         </snapshotRepository>
     </distributionManagement>
 </project>
