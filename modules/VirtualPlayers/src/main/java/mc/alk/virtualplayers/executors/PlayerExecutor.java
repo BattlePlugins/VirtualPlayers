@@ -11,10 +11,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import mc.alk.virtualplayers.VirtualPlayers;
 import mc.alk.virtualplayers.api.VirtualPlayer;
 import mc.alk.virtualplayers.api.Vps;
-import mc.alk.battlebukkitlib.DamageUtil;
+import mc.alk.virtualplayers.util.DamageUtil;
 import mc.alk.virtualplayers.util.InventoryUtil;
 import mc.alk.virtualplayers.util.Util;
 

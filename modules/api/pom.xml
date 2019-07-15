@@ -45,9 +45,9 @@
             <optional>false</optional>
         </dependency>
         <dependency>
-            <groupId>mc.alk</groupId>
-            <artifactId>BattleBukkitLib</artifactId>
-            <version>4.3.6</version>
+            <groupId>mc.euro</groupId>
+            <artifactId>BukkitInterface</artifactId>
+            <version>4.0.1</version>
             <type>jar</type>
             <scope>compile</scope>
             <optional>false</optional>
