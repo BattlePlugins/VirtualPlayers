@@ -303,4 +303,8 @@ public class CraftVirtualPlayer extends CraftPlayer implements VirtualPlayer {
         showMessages = visibility;
     }
 
+    @Override
+    public EntityPlayer getHandle() {
+        return super.getHandle();
+    }
 }

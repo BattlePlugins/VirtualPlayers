@@ -344,4 +344,8 @@ public class CraftVirtualPlayer extends CraftPlayer implements VirtualPlayer {
         setMaxHealth(max);
     }
 
+    @Override
+    public EntityPlayer getHandle() {
+        return super.getHandle();
+    }
 }

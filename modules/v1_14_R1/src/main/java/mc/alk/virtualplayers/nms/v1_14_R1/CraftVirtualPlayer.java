@@ -331,4 +331,8 @@ public class CraftVirtualPlayer extends CraftPlayer implements VirtualPlayer {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
+    public EntityPlayer getHandle() {
+        return super.getHandle();
+    }
 }
