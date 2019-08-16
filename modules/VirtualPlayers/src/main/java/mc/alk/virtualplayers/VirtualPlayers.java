@@ -17,6 +17,7 @@ import mc.alk.virtualplayers.listeners.VirtualPlayerListener;
 import mc.euro.bukkitinterface.BukkitInterface;
 import mc.euro.version.VersionFactory;
 
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -36,6 +37,8 @@ public class VirtualPlayers extends JavaPlugin implements VirtualPlayersAPI {
         Bukkit.getPluginManager().registerEvents(new VirtualPlayerListener(), this);
         getCommand("vdc").setExecutor(new PlayerExecutor(this));
         getCommand("virtualplayers").setExecutor(new VPExecutor(this));
+
+        new Metrics(this);
     }
 
     @Override

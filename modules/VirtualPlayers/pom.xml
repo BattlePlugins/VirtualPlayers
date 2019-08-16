@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>mc.alk</groupId>
     <artifactId>VirtualPlayers</artifactId>
-    <version>1.8.0</version>
+    <version>1.8.1</version>
     <packaging>jar</packaging>
     <name>VirtualPlayers</name>
     <url>http://dev.bukkit.org/bukkit-plugins/virtualplayers2/</url>
@@ -26,6 +26,10 @@
         <repository>
             <id>bukkit-public</id>
             <url>https://repo.md-5.net/content/repositories/public/</url>
+        </repository>
+        <repository>
+            <id>codemc-repo</id>
+            <url>https://repo.codemc.org/repository/maven-public</url>
         </repository>
     </repositories>
     <dependencies>
@@ -283,6 +287,13 @@
             <optional>true</optional>
         </dependency>
         <dependency>
+            <groupId>org.bstats</groupId>
+            <artifactId>bstats-bukkit</artifactId>
+            <version>1.4</version>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
@@ -355,6 +366,7 @@
                                     <include>mc.euro:BukkitAdapter</include>
                                     <include>mc.alk:VirtualPlayersAPI</include>
                                     <include>mc.alk:vp-*</include>
+                                    <include>org.bstats:bstats-bukkit</include>
                                 </includes>
                             </artifactSet>
                             <relocations>
@@ -369,6 +381,10 @@
                                 <relocation>
                                     <pattern>mc.euro.bukkitadapter</pattern>
                                     <shadedPattern>mc.alk.virtualplayers.zlib.bukkitadapter</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.bstats.bukkit</pattern>
+                                    <shadedPattern>mc.alk.virtualplayers.zlib.metrics</shadedPattern>
                                 </relocation>
                             </relocations>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
