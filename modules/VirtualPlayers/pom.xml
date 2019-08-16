@@ -308,7 +308,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>VirtualPlayers2</finalName>
+        <finalName>VirtualPlayers</finalName>
         <directory>./target</directory>
         <sourceDirectory>./src/main/java</sourceDirectory>
         <extensions>
