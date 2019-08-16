@@ -73,11 +73,11 @@ public class Util {
     }
     
     /**
-     * Uses the location, chunk, & distance calculations. <br/><br/>
+     * Uses the location, chunk, and distance calculations.
      * 
-     * @param vp 
-     * @param radius 
-     * @return
+     * @param vp the virtual player
+     * @param radius the radius
+     * @return the nearby entities
      */
     public static Collection<Entity> getNearbyEntities(VirtualPlayer vp, int radius) {
         Map<Integer, Entity> emap = new HashMap<Integer, Entity>();

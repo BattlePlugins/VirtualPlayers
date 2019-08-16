@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>mc.alk</groupId>
     <artifactId>VirtualPlayers</artifactId>
-    <version>1.8.2</version>
+    <version>1.8.3</version>
     <packaging>jar</packaging>
     <name>VirtualPlayers</name>
     <url>http://dev.bukkit.org/bukkit-plugins/virtualplayers2/</url>
@@ -294,6 +294,13 @@
             <optional>true</optional>
         </dependency>
         <dependency>
+            <groupId>mc.alk</groupId>
+            <artifactId>BattlePluginUpdater</artifactId>
+            <version>2.2.0</version>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
@@ -364,12 +371,17 @@
                                     <include>mc.euro:Version</include>
                                     <include>mc.euro:BukkitInterface</include>
                                     <include>mc.euro:BukkitAdapter</include>
+                                    <include>mc.alk:BattlePluginUpdater</include>
                                     <include>mc.alk:VirtualPlayersAPI</include>
                                     <include>mc.alk:vp-*</include>
                                     <include>org.bstats:bstats-bukkit</include>
                                 </includes>
                             </artifactSet>
                             <relocations>
+                                <relocation>
+                                    <pattern>mc.alk.battlepluginupdater</pattern>
+                                    <shadedPattern>mc.alk.virtualplayers.zlib.updater</shadedPattern>
+                                </relocation>
                                 <relocation>
                                     <pattern>mc.euro.version</pattern>
                                     <shadedPattern>mc.alk.virtualplayers.zlib.version</shadedPattern>

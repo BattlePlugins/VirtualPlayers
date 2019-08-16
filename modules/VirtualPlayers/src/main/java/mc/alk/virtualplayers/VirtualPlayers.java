@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Level;
 
+import mc.alk.battlepluginupdater.GitHubUpdater;
 import mc.alk.virtualplayers.api.VirtualPlayer;
 import mc.alk.virtualplayers.api.VirtualPlayerFactory;
 import mc.alk.virtualplayers.api.VirtualPlayersAPI;
@@ -37,6 +38,9 @@ public class VirtualPlayers extends JavaPlugin implements VirtualPlayersAPI {
         Bukkit.getPluginManager().registerEvents(new VirtualPlayerListener(), this);
         getCommand("vdc").setExecutor(new PlayerExecutor(this));
         getCommand("virtualplayers").setExecutor(new VPExecutor(this));
+
+        GitHubUpdater updater = new GitHubUpdater(this, "BattlePlugins", getDescription().getName());
+        updater.update();
 
         new Metrics(this);
     }

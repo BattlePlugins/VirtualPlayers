@@ -659,8 +659,8 @@ public class InventoryUtil {
     /**
      * For Serializing an item or printing
      *
-     * @param is
-     * @return
+     * @param is the item stack
+     * @return the item string
      */
     public static String getItemString(ItemStack is) {
         if (is == null) {

@@ -16,7 +16,7 @@ import org.bukkit.entity.Player;
 public interface VirtualPlayersAPI {
     
     /**
-     * Returns all online players, including api.VirtualPlayers. <br/><br/>
+     * Returns all online players, including api.VirtualPlayers.
      * <pre>
      * VirtualPlayers.getOnlinePlayers() :
      * Using this method has an added bonus: It is backwards compatible.
