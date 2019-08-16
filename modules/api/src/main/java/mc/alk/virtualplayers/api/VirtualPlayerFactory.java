@@ -13,7 +13,7 @@ import mc.euro.version.VersionFactory;
 import org.bukkit.entity.Player;
 
 /**
- * abstract VirtualPlayerFactory: handle the creation, tracking, & deletion of VirtualPlayers. <br/>
+ * abstract VirtualPlayerFactory: handle the creation, tracking, and deletion of VirtualPlayers.
  * <pre>
  * Abstractions:
  *     makeVirtualPlayer();
@@ -33,6 +33,8 @@ public abstract class VirtualPlayerFactory {
     
     /**
      * mc.alk.virtualplayers.nms.{version}.CraftVirtualPlayerFactory;.
+     *
+     * @return a new instance of the VirtualPlayerFactory
      */
     public static synchronized VirtualPlayerFactory newInstance() {
             if (factory != null) {
