@@ -3,4 +3,7 @@ library identifier: 'BattlePipelineLib@master', retriever: modernSCM(
         remote: 'https://@github.com/BattlePlugins/BattlePipelineLib',
         credentialsId: 'github-login'])
 
-compileAndDeployMaven {repo = 'VirtualPlayers'}
+compileAndDeployMaven {
+    repo = 'VirtualPlayers'
+    target_path = 'modules/VirtualPlayers/'
+}
