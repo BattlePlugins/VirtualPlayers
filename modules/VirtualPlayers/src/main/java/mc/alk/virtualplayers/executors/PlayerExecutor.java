@@ -83,7 +83,9 @@ public class PlayerExecutor extends VPBaseExecutor {
         if (pcpe.isCancelled()) {
             return sendMessage(sender, "&6 " + vp.getName() + "&c command cancelled : &6" + command);
         }
-        Bukkit.getServer().dispatchCommand(vp, command);
+
+        vp.performCommand(command);
+        // Bukkit.getServer().dispatchCommand(vp, command);
         return true;
     }
 
