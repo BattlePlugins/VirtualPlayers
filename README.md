@@ -15,7 +15,7 @@ Downloads:
 
 You can find the official builds at dev.bukkit.org
 
-[http://dev.bukkit.org/bukkit-plugins/virtualplayers2/](http://dev.bukkit.org/bukkit-plugins/virtualplayers2/ "Official builds")
+[https://dev.bukkit.org/projects/virtualplayers2](http://dev.bukkit.org/bukkit-plugins/virtualplayers2/ "Official builds")
 
 
 **Development builds**
@@ -25,7 +25,7 @@ You can find the official builds at dev.bukkit.org
 "These builds have not been approved by the BukkitDev staff. Use them at your own risk."
 ```
 
-[http://rainbowcraft.sytes.net/download/plugins/VirtualPlayers2/](http://rainbowcraft.sytes.net/download/plugins/VirtualPlayers2/ "Dev builds")
+[https://ci.battleplugins.org/job/BattlePlugins/job/VirtualPlayers/](https://ci.battleplugins.org/job/BattlePlugins/job/VirtualPlayers/ "Dev builds")
 
 The dev builds are primarily for testing purposes.
 
@@ -108,10 +108,6 @@ Change Log
 Contact:
 ======
 
-
-* [Europia79](http://dev.bukkit.org/profiles/Europia79 "Europia79 on dev.bukkit.org")
-
-* Skype: Nicodemis79
-
-* Email: Europia79@hotmail.com
+Live Chat on Discord:
+* [BattlePlugins Discord](https://discord.gg/tMVPVJf): Join our Discord server to get support, talk about dev stuff, or just say hi!
 
