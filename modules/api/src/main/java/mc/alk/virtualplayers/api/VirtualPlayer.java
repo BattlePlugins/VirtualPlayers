@@ -9,13 +9,13 @@ import org.bukkit.entity.Player;
  */
 public interface VirtualPlayer extends Player {
     
-    public void setOnline(boolean b);
+    void setOnline(boolean b);
     
-    public void respawn(Location loc);
-    public void moveTo(Location loc);
-    public boolean teleport(Location location, boolean respawn);
+    void respawn(Location loc);
+    void moveTo(Location loc);
+    boolean teleport(Location location, boolean respawn);
     
-    public Player getInformed();
-    public void setShowMessages(boolean visibility);
+    Player getInformed();
+    void setShowMessages(boolean visibility);
 
 }

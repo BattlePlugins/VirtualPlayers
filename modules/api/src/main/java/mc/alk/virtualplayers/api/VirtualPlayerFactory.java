@@ -10,7 +10,6 @@ import java.util.UUID;
 
 import mc.euro.version.VersionFactory;
 
-import org.bukkit.entity.Player;
 
 /**
  * abstract VirtualPlayerFactory: handle the creation, tracking, and deletion of VirtualPlayers.
@@ -41,15 +40,15 @@ public abstract class VirtualPlayerFactory {
                 return factory;
             }
             Class<?>[] args = {};
-            Constructor con = null;
-            VirtualPlayerFactory $factory = null;
+            Constructor con;
+            VirtualPlayerFactory factory = null;
             try {
                 con = getNmsClass("CraftVirtualPlayerFactory").getConstructor(args);
-                $factory = (VirtualPlayerFactory) con.newInstance();
+                factory = (VirtualPlayerFactory) con.newInstance();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-            return $factory;
+            return factory;
     }
     
     private static Class<?> getNmsClass(String clazz) throws Exception {
@@ -61,7 +60,7 @@ public abstract class VirtualPlayerFactory {
     public abstract void deleteVirtualPlayer(VirtualPlayer vp);
     
     public static VirtualPlayer getOrCreate(String name) {
-        Player vp = names.get(name);
+        VirtualPlayer vp = names.get(name);
         if (vp == null) {
             try {
                 vp = factory.makeVirtualPlayer(name);
@@ -69,7 +68,7 @@ public abstract class VirtualPlayerFactory {
                 e.printStackTrace();
             }
         }
-        return (VirtualPlayer) vp;
+        return vp;
     }
     
     public static Collection<VirtualPlayer> getVirtualPlayers() {
@@ -86,7 +85,7 @@ public abstract class VirtualPlayerFactory {
     
     public static List<VirtualPlayer> getNewPlayerList() {
         synchronized (vps) {
-            return new ArrayList<VirtualPlayer>(vps.values());
+            return new ArrayList<>(vps.values());
         }
     }
 

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.UUID;
 import mc.euro.bukkitinterface.BukkitInterface;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 /**
@@ -28,53 +29,47 @@ public interface VirtualPlayersAPI {
      *
      * @return an Array of bukkit.entity.Player + api.VirtualPlayer.
      */
-    public default Collection<? extends Player> getOnlinePlayers() {
+    default Collection<? extends Player> getOnlinePlayers() {
         List<Player> players = new ArrayList<>();
-        VirtualPlayerFactory.getVirtualPlayers().stream().filter((p) -> (p.isOnline())).forEachOrdered((p) -> {
-            players.add(p);
-        });
+        VirtualPlayerFactory.getVirtualPlayers().stream().filter(OfflinePlayer::isOnline).forEachOrdered(players::add);
         players.addAll(BukkitInterface.getOnlinePlayers());
         return players;
     };
 
-    public Player makeVirtualPlayer(String name) throws Exception;
-    public void setEventMessages(boolean visibility);
-    public void deleteVirtualPlayer(VirtualPlayer vp);
-    public void deleteVirtualPlayers();
+    Player makeVirtualPlayer(String name) throws Exception;
+    void setEventMessages(boolean visibility);
+    void deleteVirtualPlayer(VirtualPlayer vp);
+    void deleteVirtualPlayers();
     
-    public default void setGlobalMessages(boolean visibility) {
-        VirtualPlayerFactory.getVirtualPlayers().forEach((vp) -> {
-            vp.setShowMessages(visibility);
-        });
+    default void setGlobalMessages(boolean visibility) {
+        VirtualPlayerFactory.getVirtualPlayers().forEach((vp) -> vp.setShowMessages(visibility));
     }
 
-     public default Player[] getOnlinePlayersArray() {
+    default Player[] getOnlinePlayersArray() {
         return getOnlinePlayers().toArray(new Player[0]);
-    };
+    }
      
-    public default Collection<? extends VirtualPlayer> getVirtualPlayers() {
+    default Collection<? extends VirtualPlayer> getVirtualPlayers() {
         return VirtualPlayerFactory.getVirtualPlayers();
-    };
+    }
     
-    public default List<VirtualPlayer> getVirtualPlayersList() {
+    default List<VirtualPlayer> getVirtualPlayersList() {
         return VirtualPlayerFactory.getNewPlayerList();
     }
     
-    public default void setPlayerMessages(boolean visibility) {
-        getVirtualPlayers().forEach((vp) -> {
-            vp.setShowMessages(visibility);
-        });
+    default void setPlayerMessages(boolean visibility) {
+        getVirtualPlayers().forEach((vp) -> vp.setShowMessages(visibility));
     }
 
-    public default Map<UUID, VirtualPlayer> getVps() {
+    default Map<UUID, VirtualPlayer> getVps() {
         return VirtualPlayerFactory.getVps();
     }
 
-    public default Map<String, VirtualPlayer> getNames() {
+    default Map<String, VirtualPlayer> getNames() {
         return VirtualPlayerFactory.getNames();
     }
 
-    public default Player getPlayer(String pname) {
+    default Player getPlayer(String pname) {
         Player vp = Bukkit.getPlayer(pname);
         if (vp == null) {
             vp = getNames().get(pname);
@@ -82,7 +77,7 @@ public interface VirtualPlayersAPI {
         return vp;
     }
 
-    public default Player getPlayer(UUID id) {
+    default Player getPlayer(UUID id) {
         Player vp = Bukkit.getPlayer(id);
         if (vp == null) {
             vp = getVps().get(id);
@@ -90,7 +85,7 @@ public interface VirtualPlayersAPI {
         return vp;
     }
 
-    public default Player getPlayerExact(String pname) {
+    default Player getPlayerExact(String pname) {
         Player vp = Bukkit.getPlayerExact(pname);
         if (vp == null) {
             vp = getNames().get(pname);
@@ -98,7 +93,7 @@ public interface VirtualPlayersAPI {
         return vp;
     }
 
-    public default Player getOrMakePlayer(String pname) {
+    default Player getOrMakePlayer(String pname) {
         Player vp = Bukkit.getPlayer(pname);
         if (vp == null) {
             vp = getNames().get(pname);
@@ -113,7 +108,7 @@ public interface VirtualPlayersAPI {
         return vp;
     }
 
-    public default VirtualPlayer getOrCreate(String name) {
+    default VirtualPlayer getOrCreate(String name) {
         Player vp = VirtualPlayerFactory.getNames().get(name);
         if (vp == null) {
             try {
@@ -125,11 +120,11 @@ public interface VirtualPlayersAPI {
         return (VirtualPlayer) vp;
     }
 
-    public default Player makeVirtualPlayer() throws Exception {
+    default Player makeVirtualPlayer() throws Exception {
         return makeVirtualPlayer(null);
     }
 
-    public default void deleteVirtualPlayer(String name) {
+    default void deleteVirtualPlayer(String name) {
         VirtualPlayer vp = getNames().get(name);
         deleteVirtualPlayer(vp);
     }

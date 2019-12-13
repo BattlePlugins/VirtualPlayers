@@ -17,8 +17,8 @@ public class DamageHandlerFactory {
 
     public static IDamageHandler getNewInstance() {
         Version<Server> server = VersionFactory.getServerVersion();
-        IDamageHandler handler = null;
-        Class clazz = null;
+        IDamageHandler handler = IDamageHandler.DEFAULT_HANDLER;
+        Class<?> clazz = null;
         try {
             Class<?>[] args = {};
             if (server.isGreaterThanOrEqualTo("1.2.5") && server.isLessThan("1.6.1")) {
@@ -27,11 +27,14 @@ public class DamageHandlerFactory {
                 clazz = Class.forName("mc.alk.virtualplayers.nms.v1_6_R1.DamageHandler");
             }
 
+            if (clazz == null)
+                return handler;
+
             handler = (IDamageHandler) clazz.getConstructor(args).newInstance((Object[]) args);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        return (handler == null) ? IDamageHandler.DEFAULT_HANDLER : handler;
+        return handler;
     }
 }

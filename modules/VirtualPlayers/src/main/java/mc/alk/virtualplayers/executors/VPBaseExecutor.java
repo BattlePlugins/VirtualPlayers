@@ -82,7 +82,6 @@ public class VPBaseExecutor extends CustomCommandExecutor {
         }
     }
 
-    @SuppressWarnings("SimplifiableIfStatement")
     @Override
     public boolean sendMessage(CommandSender sender, String string) {
         if (string == null || !showEventMessages) {

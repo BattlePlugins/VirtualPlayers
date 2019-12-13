@@ -21,10 +21,10 @@ public class Util {
 
     public interface VPMessageListener {
 
-        public void gettingMessage(Player player, String msg);
+        void gettingMessage(Player player, String msg);
     }
 
-    static final List<VPMessageListener> listeners = new ArrayList<VPMessageListener>();
+    static final List<VPMessageListener> listeners = new ArrayList<>();
 
     static public String getLocString(Location l) {
         if (l == null) {
@@ -80,7 +80,7 @@ public class Util {
      * @return the nearby entities
      */
     public static Collection<Entity> getNearbyEntities(VirtualPlayer vp, int radius) {
-        Map<Integer, Entity> emap = new HashMap<Integer, Entity>();
+        Map<Integer, Entity> emap = new HashMap<>();
         int numChunks = (int) Math.floor(radius / 16) + 1;
         int blocks = numChunks * 16;
         int diameter = blocks * 2;

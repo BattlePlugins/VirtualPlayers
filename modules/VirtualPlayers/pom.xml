@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>mc.alk</groupId>
     <artifactId>VirtualPlayers</artifactId>
-    <version>1.8.3</version>
+    <version>1.9.0</version>
     <packaging>jar</packaging>
     <name>VirtualPlayers</name>
     <url>http://dev.bukkit.org/bukkit-plugins/virtualplayers2/</url>
@@ -287,6 +287,14 @@
             <optional>true</optional>
         </dependency>
         <dependency>
+            <groupId>mc.alk</groupId>
+            <artifactId>vp-v1_15_R1</artifactId>
+            <version>static_version</version>
+            <type>jar</type>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
             <groupId>org.bstats</groupId>
             <artifactId>bstats-bukkit</artifactId>
             <version>1.4</version>
@@ -358,7 +366,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>2.3</version>
+                <version>3.2.1</version>
                 <executions>
                     <execution>
                         <phase>package</phase>

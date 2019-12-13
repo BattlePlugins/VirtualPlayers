@@ -1,16 +1,14 @@
 package mc.alk.virtualplayers.executors;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import mc.alk.virtualplayers.VirtualPlayers;
 import mc.alk.virtualplayers.api.VirtualPlayer;
 import mc.alk.virtualplayers.api.Vps;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.plugin.Plugin;
 
 /**
@@ -48,15 +46,8 @@ public class VPExecutor extends VPBaseExecutor {
         List<VirtualPlayer> players = Vps.getApi().getVirtualPlayersList();
         sender.sendMessage("VirtualPlayers count=" + players.size());
 
-        Collections.sort(players, new Comparator<VirtualPlayer>() {
-            @Override
-            public int compare(VirtualPlayer o1, VirtualPlayer o2) {
-                return o1.getName().compareTo(o2.getName());
-            }
-        });
-        players.forEach((vp) -> {
-            sendMessage(sender, vp.getName() + " : " + vp);
-        });
+        players.sort(Comparator.comparing(HumanEntity::getName));
+        players.forEach((vp) -> sendMessage(sender, vp.getName() + " : " + vp));
     }
 
     @MCCommand(cmds = {"showMessages"}, op = true)
