@@ -39,8 +39,13 @@ public class VirtualPlayers extends JavaPlugin implements VirtualPlayersAPI {
         getCommand("vdc").setExecutor(new PlayerExecutor(this));
         getCommand("virtualplayers").setExecutor(new VPExecutor(this));
 
-        GitHubUpdater updater = new GitHubUpdater(this, "BattlePlugins", getDescription().getName());
-        updater.update();
+        try {
+            GitHubUpdater updater = new GitHubUpdater(this, "BattlePlugins", getDescription().getName());
+            updater.update();
+        } catch (Throwable ex) {
+            // Usually if GSON is not installed
+            getLogger().warning("GSON not found... auto updates will be disabled. If you wish to enable this feature, please install a plugin offering GSON support!");
+        }
 
         new Metrics(this);
     }
