@@ -28,7 +28,7 @@ public class CraftVirtualPlayerFactory extends VirtualPlayerFactory {
     public VirtualPlayer makeVirtualPlayer(String name) throws Exception {
         CraftServer cserver = (CraftServer) Bukkit.getServer();
         List<World> worlds = cserver.getWorlds();
-        if (worlds == null || worlds.isEmpty()) {
+        if (worlds.isEmpty()) {
             throw new Exception("There must be at least one world");
         }
         CraftWorld w = (CraftWorld) worlds.get(0);
@@ -40,8 +40,7 @@ public class CraftVirtualPlayerFactory extends VirtualPlayerFactory {
             name = "p" + (vps.size() + 1);
         }
         GameProfile gameProfile = new GameProfile(UUID.randomUUID(), Util.colorChat(name));
-        CraftVirtualPlayer cvp = new CraftVirtualPlayer(cserver, mcserver, worldServer, gameProfile, pim, location);
-        VirtualPlayer vp = (VirtualPlayer) cvp;
+        VirtualPlayer vp = new CraftVirtualPlayer(cserver, mcserver, worldServer, gameProfile, pim, location);
         vps.put(vp.getUniqueId(), vp);
         names.put(vp.getName(), vp);
         return vp;

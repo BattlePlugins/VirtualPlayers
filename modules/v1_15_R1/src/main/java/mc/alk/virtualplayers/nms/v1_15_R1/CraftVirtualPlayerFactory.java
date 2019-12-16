@@ -1,13 +1,16 @@
 package mc.alk.virtualplayers.nms.v1_15_R1;
 
 import com.mojang.authlib.GameProfile;
+
 import mc.alk.virtualplayers.api.VirtualPlayer;
 import mc.alk.virtualplayers.api.VirtualPlayerFactory;
 import mc.alk.virtualplayers.util.Util;
+
 import net.minecraft.server.v1_15_R1.DimensionManager;
 import net.minecraft.server.v1_15_R1.MinecraftServer;
 import net.minecraft.server.v1_15_R1.PlayerInteractManager;
 import net.minecraft.server.v1_15_R1.WorldServer;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -33,7 +36,7 @@ public class CraftVirtualPlayerFactory extends VirtualPlayerFactory {
     private CraftVirtualPlayer newCraftVirtualPlayer(String name) throws Exception {
         CraftServer cserver = (CraftServer) Bukkit.getServer();
         List<World> worlds = cserver.getWorlds();
-        if (worlds == null || worlds.isEmpty()) {
+        if (worlds.isEmpty()) {
             throw new Exception("There must be at least one world");
         }
         CraftWorld w = (CraftWorld) worlds.get(0);
@@ -46,8 +49,7 @@ public class CraftVirtualPlayerFactory extends VirtualPlayerFactory {
             name = "p" + (vps.size() + 1);
         }
         GameProfile gameProfile = new GameProfile(UUID.randomUUID(), Util.colorChat(name));
-        CraftVirtualPlayer cvp = new CraftVirtualPlayer(cserver, mcserver, worldServer, gameProfile, pim, location);
-        return cvp;
+        return new CraftVirtualPlayer(cserver, mcserver, worldServer, gameProfile, pim, location);
     }
 
     @Override

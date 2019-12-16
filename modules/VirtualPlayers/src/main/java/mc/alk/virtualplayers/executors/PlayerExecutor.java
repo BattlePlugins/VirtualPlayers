@@ -198,7 +198,7 @@ public class PlayerExecutor extends VPBaseExecutor {
         }
         Player player = (Player) sender;
         sendMessage(player, "&6" + vp.getName() + " is now trying to come to you!");
-        vp.moveTo(player.getLocation());
+        vp.teleport(player.getLocation());
         return true;
     }
 
@@ -499,7 +499,7 @@ public class PlayerExecutor extends VPBaseExecutor {
         if (!ede.isCancelled()) {
             damagee.setLastDamageCause(ede);
             if (damagee instanceof VirtualPlayer) {
-                ((VirtualPlayer) damagee).setHealth(damagee.getHealth() - ede.getDamage());
+                damagee.setHealth(damagee.getHealth() - ede.getDamage());
             } else {
                 DamageUtil.damageEntity(damagee, ede.getDamage());
             }
@@ -538,43 +538,36 @@ public class PlayerExecutor extends VPBaseExecutor {
         if (connecting) {
             // PreLogin Event has to be called from a thread other than the main thread.
             final String playerName = vp.getName();
-            Runnable r = new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        AsyncPlayerPreLoginEvent playerPreLoginEvent = new AsyncPlayerPreLoginEvent(
-                                playerName, InetAddress.getLocalHost());
-                        Bukkit.getPluginManager().callEvent(playerPreLoginEvent);
-                    } catch (UnknownHostException ex) {/* say nothing */
-
-                    }
-                    /// After we are done Asynchronously handling the preloginevent
-                    /// Sync back up and call the Login and Join events
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(
-                            plugin, new Runnable() {
-                                @Override
-                                public void run() {
-                                    // Then the Login Event.
-                                    Server cserver = Bukkit.getServer();
-                                    try {
-                                        PlayerLoginEvent playerLoginEvent = new PlayerLoginEvent(
-                                                vp, "localhost", InetAddress
-                                                .getLocalHost());
-                                        cserver.getPluginManager().callEvent(
-                                                playerLoginEvent);
-                                    } catch (UnknownHostException ex) {/* do nothing */
-
-                                    }
-
-                                    // Finally, the player join event.
-                                    PlayerJoinEvent playerJoinEvent = new PlayerJoinEvent(
-                                            vp, "\u00A7e" + vp.getName()
-                                            + " joined the game.");
-                                    cserver.getPluginManager().callEvent(playerJoinEvent);
-                                }
-                            });
+            Runnable r = () -> {
+                try {
+                    AsyncPlayerPreLoginEvent playerPreLoginEvent = new AsyncPlayerPreLoginEvent(
+                            playerName, InetAddress.getLocalHost());
+                    Bukkit.getPluginManager().callEvent(playerPreLoginEvent);
+                } catch (UnknownHostException ex) {/* say nothing */
 
                 }
+                /// After we are done Asynchronously handling the preloginevent
+                /// Sync back up and call the Login and Join events
+                Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {
+                            // Then the Login Event.
+                            Server cserver = Bukkit.getServer();
+                            try {
+                                PlayerLoginEvent playerLoginEvent = new PlayerLoginEvent(
+                                        vp, "localhost", InetAddress
+                                        .getLocalHost());
+                                cserver.getPluginManager().callEvent(
+                                        playerLoginEvent);
+                            } catch (UnknownHostException ex) {/* do nothing */
+
+                            }
+
+                            // Finally, the player join event.
+                            PlayerJoinEvent playerJoinEvent = new PlayerJoinEvent(
+                                    vp, "\u00A7e" + vp.getName()
+                                    + " joined the game.");
+                            cserver.getPluginManager().callEvent(playerJoinEvent);
+                        });
+
             };
             new Thread(r).start();
         } else { /// Disconnecting
@@ -584,7 +577,7 @@ public class PlayerExecutor extends VPBaseExecutor {
             cserver.getPluginManager().callEvent(playerQuitEvent);
         }
         String msg = "&6" + vp.getName() + "&2 "
-                + (connecting ? "connecting.  Details:&6" + vp : "&cdisconnecting");
+                + (connecting ? "connecting. Details:&6" + vp : "&cdisconnecting");
         sendMessage(sender, vp, msg);
         return true;
     }

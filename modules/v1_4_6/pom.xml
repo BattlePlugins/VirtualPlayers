@@ -41,7 +41,6 @@
     <build>
         <finalName>VirtualPlayers-v1_4_6</finalName>
         <directory>./target</directory>
-        <sourceDirectory>./src/main/java</sourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

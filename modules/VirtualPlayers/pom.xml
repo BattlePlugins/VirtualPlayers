@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>mc.alk</groupId>
     <artifactId>VirtualPlayers</artifactId>
-    <version>1.9.0</version>
+    <version>1.10.0</version>
     <packaging>jar</packaging>
     <name>VirtualPlayers</name>
     <url>http://dev.bukkit.org/bukkit-plugins/virtualplayers2/</url>
@@ -318,7 +318,6 @@
     <build>
         <finalName>VirtualPlayers</finalName>
         <directory>./target</directory>
-        <sourceDirectory>./src/main/java</sourceDirectory>
         <extensions>
             <extension>
                 <groupId>org.apache.maven.wagon</groupId>

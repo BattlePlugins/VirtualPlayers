@@ -62,7 +62,6 @@
     <build>
         <finalName>VirtualPlayersAPI</finalName>
         <directory>./target</directory>
-        <sourceDirectory>./src/main/java</sourceDirectory>
         <extensions>
             <extension>
                 <groupId>org.apache.maven.wagon</groupId>
@@ -78,6 +77,7 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <compilerArgument>-proc:none</compilerArgument>
                 </configuration>
             </plugin>
             <plugin>

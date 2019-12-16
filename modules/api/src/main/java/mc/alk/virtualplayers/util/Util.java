@@ -1,5 +1,6 @@
 package mc.alk.virtualplayers.util;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -30,15 +31,16 @@ public class Util {
         if (l == null) {
             return "null";
         }
+        DecimalFormat format = new DecimalFormat("0.##");
         StringBuilder sb = new StringBuilder();
-        sb.append((isInt(l.getX())) ? l.getBlockX() : l.getX()).append(",");
-        sb.append((isInt(l.getY())) ? l.getBlockY() : l.getY()).append(",");
-        sb.append(((isInt(l.getZ())) ? l.getBlockZ() : l.getZ()));
+        sb.append(format.format(l.getX())).append(",");
+        sb.append(format.format(l.getY())).append(",");
+        sb.append(format.format(l.getZ()));
         if (l.getYaw() != 0f) {
-            sb.append(",").append(l.getYaw());
+            sb.append(",").append(format.format(l.getYaw()));
         }
         if (l.getPitch() != 0f) {
-            sb.append(",").append(l.getPitch());
+            sb.append(",").append(format.format(l.getPitch()));
         }
         return sb.toString();
     }
