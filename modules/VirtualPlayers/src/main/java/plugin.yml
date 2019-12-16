@@ -1,9 +1,10 @@
 name: ${project.name}
 version: ${project.version}
-authors: [Alkarin, Europia79]
+authors: [Alkarin, Europia79, BattlePlugins]
 description: Create Virtualplayers for debugging or running commands otherwise unavailable from the console
 main: mc.alk.virtualplayers.VirtualPlayers
-website: https://github.com/Europia79/VirtualPlayers
+api-version: 1.13
+website: https://github.com/BattlePlugins/VirtualPlayers
 commands:
     virtualplayers:
         aliases: [vp,vps,virtualplayer]
