@@ -46,4 +46,13 @@ public interface VirtualPlayers {
      */
     @Nullable
     VirtualPlayer getVirtualPlayer(String name);
+
+    /**
+     * Gets the instance of the VirtualPlayers API.
+     *
+     * @return the instance of the VirtualPlayers API
+     */
+    static VirtualPlayers api() {
+        return ApiHolder.virtualPlayers();
+    }
 }

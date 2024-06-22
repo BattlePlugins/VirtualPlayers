@@ -3,6 +3,7 @@ package org.battleplugins.virtualplayers;
 import org.battleplugins.virtualplayers.api.VirtualPlayer;
 import org.battleplugins.virtualplayers.api.VirtualPlayers;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.Nullable;
 
@@ -16,6 +17,11 @@ public class VirtualPlayersPlugin extends JavaPlugin implements VirtualPlayers {
     private VirtualPlayersExecutor executor;
 
     @Override
+    public void onLoad() {
+        Bukkit.getServicesManager().register(VirtualPlayers.class, this, this, ServicePriority.Normal);
+    }
+
+    @Override
     public void onEnable() {
         CommandInjector.inject(this, "virtualplayers", "The main VirtualPlayers command.", command -> {
             command.setAliases(List.of("vp"));
@@ -26,7 +32,7 @@ public class VirtualPlayersPlugin extends JavaPlugin implements VirtualPlayers {
 
     @Override
     public void onDisable() {
-
+        List.copyOf(this.virtualPlayers.values()).forEach(this::removeVirtualPlayer);
     }
 
     @Override
