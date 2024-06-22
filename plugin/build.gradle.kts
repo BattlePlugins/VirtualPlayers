@@ -44,10 +44,12 @@ tasks {
 }
 
 modrinth {
+    val snapshot = "SNAPSHOT" in rootProject.version.toString()
+
     token.set(System.getenv("MODRINTH_TOKEN") ?: "")
     projectId.set("virtualplayers")
-    versionNumber.set(rootProject.version as String + "-" + System.getenv("BUILD_NUMBER"))
-    versionType.set(if ("SNAPSHOT" in rootProject.version.toString()) "beta" else "release")
+    versionNumber.set(rootProject.version as String + if (snapshot) "-" + System.getenv("BUILD_NUMBER") else "")
+    versionType.set(if (snapshot) "beta" else "release")
     changelog.set(System.getenv("CHANGELOG") ?: "")
     uploadFile.set(tasks.shadowJar)
     gameVersions.set(supportedVersions)
