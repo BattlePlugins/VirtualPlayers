@@ -14,5 +14,11 @@ dependencyResolutionManagement {
     }
 }
 
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
 include("api")
 include("plugin")

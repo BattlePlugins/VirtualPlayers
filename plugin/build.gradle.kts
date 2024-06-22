@@ -1,7 +1,10 @@
 plugins {
     id("io.papermc.paperweight.userdev") version "1.7.1"
     id("xyz.jpenilla.run-paper") version "2.3.0"
+    id("com.modrinth.minotaur") version "2.+"
 }
+
+val supportedVersions = listOf("1.20.6", "1.21")
 
 repositories {
     maven("https://repo.papermc.io/repository/maven-public/")
@@ -38,4 +41,14 @@ tasks {
     named("build") {
         dependsOn(shadowJar)
     }
+}
+
+modrinth {
+    token.set(System.getenv("MODRINTH_TOKEN") ?: "")
+    projectId.set("virtualplayers")
+    versionNumber.set(rootProject.version as String + "-" + System.getenv("BUILD_NUMBER"))
+    versionType.set(if ("SNAPSHOT" in rootProject.version.toString()) "beta" else "release")
+    changelog.set(System.getenv("CHANGELOG") ?: "")
+    uploadFile.set(tasks.shadowJar)
+    gameVersions.set(supportedVersions)
 }
