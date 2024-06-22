@@ -51,4 +51,4 @@ VirtualPlayers is a plugin designed for developers and server admins to easily t
 ## Links
 - Website: [https://www.battleplugins.org](https://www.battleplugins.org)
 - Download: [https://modrinth.com/plugin/virtualplayers](https://modrinth.com/plugin/virtualplayers)
-- Discord: [BattlePlugins Discord](https://discord.gg/tMVPJf)
+- Discord: [BattlePlugins Discord](https://discord.com/invite/J3Hjjb8)
