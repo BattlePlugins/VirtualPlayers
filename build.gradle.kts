@@ -5,12 +5,6 @@ plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
-version = "3.0.0"
-
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
-}
-
 allprojects {
     apply {
         plugin("java")
@@ -20,9 +14,18 @@ allprojects {
     }
 
     group = "org.battleplugins.virtualplayers"
+    version = "3.0.0"
 
     repositories {
         maven("https://repo.papermc.io/repository/maven-public/")
+    }
+
+    java {
+        withJavadocJar()
+        withSourcesJar()
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(21))
+        }
     }
 }
 
