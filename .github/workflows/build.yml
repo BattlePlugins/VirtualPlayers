@@ -17,6 +17,13 @@ jobs:
           cache: gradle
       - name: Build with Gradle
         run: ./gradlew build
+      - name: Publish to Maven Repository
+        if: ${{ success() && github.repository == 'BattlePlugins/VirtualPlayers' && github.ref_name == 'master' }}
+        run: ./gradlew publish
+        env:
+          BUILD_NUMBER: ${{ github.run_number }}
+          ORG_GRADLE_PROJECT_battlepluginsUsername: ${{ vars.DEPLOY_USER }}
+          ORG_GRADLE_PROJECT_battlepluginsPassword: ${{ secrets.DEPLOY_SECRET }}
       - name: Publish to Modrinth
         if: ${{ success() && github.repository == 'BattlePlugins/VirtualPlayers' && github.ref_name == 'master' }}
         env:
