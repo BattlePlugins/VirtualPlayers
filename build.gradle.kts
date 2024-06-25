@@ -5,7 +5,6 @@ plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
-group = "org.battleplugins"
 version = "3.0.0"
 
 java {
@@ -13,10 +12,6 @@ java {
 }
 
 allprojects {
-    repositories {
-        maven("https://repo.papermc.io/repository/maven-public/")
-    }
-
     apply {
         plugin("java")
         plugin("java-library")
@@ -24,6 +19,14 @@ allprojects {
         plugin("com.github.johnrengelman.shadow")
     }
 
+    group = "org.battleplugins.virtualplayers"
+
+    repositories {
+        maven("https://repo.papermc.io/repository/maven-public/")
+    }
+}
+
+subprojects {
     publishing {
         val isSnapshot = "SNAPSHOT" in version.toString()
 
