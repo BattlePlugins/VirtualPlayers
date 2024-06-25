@@ -2,6 +2,7 @@ plugins {
     id("io.papermc.paperweight.userdev") version "1.7.1"
     id("xyz.jpenilla.run-paper") version "2.3.0"
     id("com.modrinth.minotaur") version "2.+"
+    id("com.github.johnrengelman.shadow")
 }
 
 val supportedVersions = listOf("1.20.6", "1.21")
