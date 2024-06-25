@@ -33,7 +33,7 @@ allprojects {
                 url = uri("https://repo.battleplugins.org/${if (isSnapshot) "snapshots" else "releases"}")
                 credentials(PasswordCredentials::class)
                 authentication {
-                    create("basic")
+                    create<BasicAuthentication>("basic")
                 }
             }
 
