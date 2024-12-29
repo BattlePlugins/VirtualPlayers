@@ -16,12 +16,17 @@ import org.battleplugins.virtualplayers.api.VirtualPlayer;
 import org.bukkit.command.CommandSender;
 
 import javax.annotation.Nullable;
+import java.net.SocketAddress;
 
 public class VirtualConnection extends Connection {
     private VirtualPlayer player;
 
     public VirtualConnection(PacketFlow side) {
         super(side);
+
+        this.channel = new VirtualChannel(null);
+        this.address = new SocketAddress() {
+        };
     }
 
     public void setPlayer(VirtualPlayer player) {
@@ -62,5 +67,9 @@ public class VirtualConnection extends Connection {
 
     @Override
     public <T extends PacketListener> void setupInboundProtocol(ProtocolInfo<T> state, T packetListener) {
+    }
+
+    // @Override
+    public void flushChannel() {
     }
 }
